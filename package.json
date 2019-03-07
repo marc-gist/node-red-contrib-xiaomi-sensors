@@ -1,7 +1,8 @@
 {
-  "name": "node-red-xiaomi-aqara",
+  "name": "node-red-contrib-xiaomi-sensors",
   "version": "1.0.0",
-  "description": "zigbee2mqtt payload converter for sensors",
+  "description": "zigbee2mqtt payload converter for Xiaomi/Aqua sensors",
+  "keywords": ["node-red", "xiaomi", "aqara", "zigbee2mqtt"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
