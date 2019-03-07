@@ -1,0 +1,33 @@
+<script type="text/javascript">
+    RED.nodes.registerType('button_v1',{
+        category: 'Aqara-Xiaomi z2m',
+        color: '#14e830',
+        defaults: {
+            name: {value:""},
+            lowBatteryLevel: { value: 30, validate:RED.validators.number() }
+        },
+        inputs:1,
+        outputs: 5,
+        inputLabels: ["MQTT JSON String"],
+        outputLabels: ["Single", "Double", "Triple", "Quadruple", "Low Battery"],
+        icon: "button.png",
+        label: function() {
+            return this.name||"button_v1";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="button_v1">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-lowBatteryLevel"><i class="icon-tag"></i> Low Battery</label>
+        <input type="text" id="node-input-lowBatteryLevel" placeholder="30">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="button_v1">
+    <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into door sensor outputs</p>
+</script>

@@ -10,7 +10,8 @@
   "node-red": {
     "nodes": {
       "door-sensor": "door_sensor/door-sensor.js",
-      "motion-sensor": "motion_sensor/motion-sensor.js"
+      "motion-sensor": "motion_sensor/motion-sensor.js",
+      "button-v1": "button_v1/button_v1.js"
     }
   },
   "bundledDependencies": false,
