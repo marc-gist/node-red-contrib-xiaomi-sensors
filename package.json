@@ -1,0 +1,20 @@
+{
+  "name": "node-red-xiaomi-aqara",
+  "version": "1.0.0",
+  "description": "zigbee2mqtt payload converter for sensors",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marc R",
+  "license": "ISC",
+  "node-red": {
+    "nodes": {
+      "door-sensor": "door_sensor/door-sensor.js",
+      "motion-sensor": "motion_sensor/motion-sensor.js"
+    }
+  },
+  "bundledDependencies": false,
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
+}

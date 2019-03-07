@@ -1,0 +1,33 @@
+<script type="text/javascript">
+    RED.nodes.registerType('motion-sensor',{
+        category: 'Aqara-Xiaomi z2m',
+        color: '#14e830',
+        defaults: {
+            name: {value:""},
+            lowBatteryLevel: { value: 30, validate:RED.validators.number() }
+        },
+        inputs:1,
+        outputs: 3,
+        inputLabels: ["MQTT JSON String"],
+        outputLabels: ["Occupied", "Empty", "Low Battery"],
+        icon: "motion.png",
+        label: function() {
+            return this.name||"door-sensor";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="motion-sensor">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-lowBatteryLevel"><i class="icon-tag"></i> Low Battery</label>
+        <input type="text" id="node-input-lowBatteryLevel" placeholder="30">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="motion-sensor">
+    <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into motion sensor outputs</p>
+</script>
