@@ -11,7 +11,8 @@
     "nodes": {
       "door-sensor": "door_sensor/door-sensor.js",
       "motion-sensor": "motion_sensor/motion-sensor.js",
-      "button-v1": "button_v1/button_v1.js"
+      "button-v1": "button_v1/button_v1.js",
+      "button-v2": "button_v2/button_v2.js"
     }
   },
   "bundledDependencies": false,

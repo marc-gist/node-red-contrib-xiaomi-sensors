@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('motion-sensor',{
+    RED.nodes.registerType('button_v2',{
         category: 'Aqara-Xiaomi z2m',
         color: '#14e830',
         defaults: {
@@ -7,17 +7,17 @@
             lowBatteryLevel: { value: 30, validate:RED.validators.number() }
         },
         inputs:1,
-        outputs: 3,
+        outputs: 5,
         inputLabels: ["MQTT JSON String"],
-        outputLabels: ["Occupied", "Empty", "Low Battery"],
-        icon: "motion.png",
+        outputLabels: ["Single", "Double", "Hold", "Release", "Low Battery"],
+        icon: "button2.png",
         label: function() {
-            return this.name||"motion-sensor";
+            return this.name||"button_v2";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="motion-sensor">
+<script type="text/x-red" data-template-name="button_v2">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -28,6 +28,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="motion-sensor">
-    <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into motion sensor outputs</p>
+<script type="text/x-red" data-help-name="button_v2">
+    <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into door sensor outputs</p>
+    <p>Version 2 buttons have Two (2) Clicks, single and double, and Two (2) Actions, Hold and Release.
 </script>
