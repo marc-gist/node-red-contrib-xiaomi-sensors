@@ -1,5 +1,11 @@
 # Xiaomi/Aqara MQTT Sensor Nodes
 
+## Installing:
+Directly from Github, goto your `node_modules` directory.  
+In **Docker** you should goto `/data/node_modules` THEN **run**
+ 
+> npm install marc-gist/node-red-contrib-xiaomi-sensors 
+
 ## Requirements:
 
 1. [Zigbee2MQTT](https://www.zigbee2mqtt.io/) (**aka z2m**) and everything you need to get that runnings :)
