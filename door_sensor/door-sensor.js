@@ -19,9 +19,9 @@ module.exports = function(RED) {
             });
             if(msg.payload.contact === true) {
                 // door is closed, second position payload.
-                ret[0] = msg;
-            } else {
                 ret[1] = msg;
+            } else {
+                ret[0] = msg;
             }
             if(msg.payload.battery < node.lowBatteryLevel) {
                 ret[2] = msg;
