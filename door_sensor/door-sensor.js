@@ -7,10 +7,10 @@ module.exports = function(RED) {
     RED.nodes.registerType('door-sensor', function (config) {
         RED.nodes.createNode(this, config);
         this.lowBatteryLevel = config.lowBatteryLevel;
-        var node = this;
+        let node = this;
         //not this is "global" and saved states
         node.on('input', function (msg) {
-            var ret = [null, null, null];
+            let ret = [null, null, null];
             msg.payload = JSON.parse(msg.payload);
             node.status({
                 text: moment().format(fmt),
