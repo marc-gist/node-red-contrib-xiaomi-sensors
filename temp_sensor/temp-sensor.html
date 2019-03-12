@@ -1,26 +1,36 @@
 <script type="text/javascript">
-    RED.nodes.registerType('door-sensor',{
+    RED.nodes.registerType('temp-sensor',{
         category: 'Aqara-Xiaomi z2m',
         color: '#14e830',
         defaults: {
             name: {value:""},
+            rangeAbove: {value: null, validate:RED.validators.number() },
+            rangeBelow: {value: null, validate:RED.validators.number() },
             lowBatteryLevel: { value: 30, validate:RED.validators.number() }
         },
         inputs:1,
-        outputs: 3,
+        outputs: 4,
         inputLabels: ["MQTT JSON String"],
-        outputLabels: ["Open", "Closed", "Low Battery"],
-        icon: "doorsensor.png",
+        outputLabels: ["Temperature", "Humidity", "Alert", "Low Battery"],
+        icon: "tempsensor.png",
         label: function() {
-            return this.name||"door-sensor";
+            return this.name||"temp-sensor";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="door-sensor">
+<script type="text/x-red" data-template-name="temp-sensor">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-rangeBelow"><i class="fa fa-thermometer-empty"></i> Temperature Below Alert</label>
+        <input type="text" id="node-input-rangeBelow" placeholder="0">
+    </div>
+    <div class="form-row">
+        <label for="node-input-rangeAbove"><i class="fa fa-thermometer-full "></i> Temperature Above Alert</label>
+        <input type="text" id="node-input-rangeAbove" placeholder="30">
     </div>
     <div class="form-row">
         <label for="node-input-lowBatteryLevel"><i class="fa fa-battery-quarter"></i> Low Battery</label>
@@ -28,7 +38,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="door-sensor">
+<script type="text/x-red" data-help-name="temp-sensor">
     <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into door sensor outputs</p>
     <p>
         Status is <span style="color: green">Green</span> when doors are closed, <span style="color: red;">Red</span> when doors are open.
