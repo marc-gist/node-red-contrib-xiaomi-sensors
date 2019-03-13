@@ -4,8 +4,8 @@
         color: '#14e830',
         defaults: {
             name: {value:""},
-            rangeAbove: {value: null, validate:RED.validators.number() },
-            rangeBelow: {value: null, validate:RED.validators.number() },
+            rangeAbove: {value: 128, validate:RED.validators.number() },
+            rangeBelow: {value: -128, validate:RED.validators.number() },
             lowBatteryLevel: { value: 30, validate:RED.validators.number() }
         },
         inputs:1,
@@ -41,9 +41,13 @@
 <script type="text/x-red" data-help-name="temp-sensor">
     <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into door sensor outputs</p>
     <p>
-        Status is <span style="color: green">Green</span> when doors are closed, <span style="color: red;">Red</span> when doors are open.
+        Status is <span style="color: green">Green</span> when no alert,
+        <span style="color: red;">Red</span> when there is an alert.
     </p>
     <p>
-        <strong>Note:</strong> sensor payload is "true" for closed door.
+        Alert output: payload is true/false, original payload is in msg.data<br />
+        msg.alert = 'above' or 'below' for type of alert.<br />
+        <strong>Note:</strong> No checks on values for above/below, so below alert can be overwritten
+        by above check that happens after.
     </p>
 </script>
