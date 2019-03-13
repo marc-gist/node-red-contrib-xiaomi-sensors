@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-xiaomi-sensors",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "zigbee2mqtt payload converter for Xiaomi/Aqua sensors",
   "keywords": [
     "node-red",
@@ -11,8 +11,29 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Marc R",
-  "license": "ISC",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marc-gist/node-red-contrib-xiaomi-sensors.git"
+  },
+  "author": {
+    "name": "marc-gist",
+    "email": "marcgist@maskr.me",
+    "url": "https://github.com/marc-gist"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/marc-gist/node-red-contrib-xiaomi-sensors/issues"
+  },
+  "contributors": [
+    {
+      "name": "marc-gist",
+      "url": "https://github.com/marc-gist"
+    }
+  ],
+  "homepage": "https://github.com/marc-gist/node-red-contrib-xiaomi-sensors#readme",
   "node-red": {
     "nodes": {
       "door-sensor": "door_sensor/door-sensor.js",
@@ -22,7 +43,6 @@
       "temp-sensor": "temp_sensor/temp-sensor.js"
     }
   },
-  "bundledDependencies": false,
   "dependencies": {
     "moment": "^2.24.0"
   }
