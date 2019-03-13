@@ -4,6 +4,7 @@
         color: '#14e830',
         defaults: {
             name: {value:""},
+            motionDelay: {value: 0},
             lowBatteryLevel: { value: 30, validate:RED.validators.number() }
         },
         inputs:1,
@@ -21,6 +22,11 @@
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-motionDelay"><i class="fa fa-clock-o"></i> Motion Delay</label>
+        <input type="text" id="node-input-motionDelay" placeholder="120">
+        <div class="help">Delay Empty message by X seconds; 0 = disabled</div>
     </div>
     <div class="form-row">
         <label for="node-input-lowBatteryLevel"><i class="fa fa-battery-quarter"></i> Low Battery</label>
