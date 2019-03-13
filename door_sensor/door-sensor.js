@@ -1,8 +1,11 @@
-'use strict';
+const path = require('path');
+const constants = require(path.join(__dirname, '../lib/constants.js'));
+
 module.exports = function(RED) {
+    'use strict';
+
     const debug = true;
     const moment = require('moment');
-    const fmt = 'YYYY-MM-DD HH:mm';
 
     RED.nodes.registerType('door-sensor', function (config) {
         RED.nodes.createNode(this, config);
@@ -12,8 +15,9 @@ module.exports = function(RED) {
         node.on('input', function (msg) {
             let ret = [null, null, null];
             msg.payload = JSON.parse(msg.payload);
+            const doorIcon = msg.payload.contact ? "⛔ " : "⭕ ";
             node.status({
-                text: moment().format(fmt),
+                text: doorIcon + moment().format(constants.DATE_FORMAT),
                 fill: msg.payload.contact ? "green" : "red",
                 shape: msg.payload.contact ? "dot" : "ring"
             });

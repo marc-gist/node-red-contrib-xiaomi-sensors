@@ -1,8 +1,11 @@
-'use strict';
+const path = require('path');
+const constants = require(path.join(__dirname, '../lib/constants.js'));
+
 module.exports = function(RED) {
+    'use strict';
     const debug = true;
     const moment = require('moment');
-    const fmt = 'YYYY-MM-DD HH:mm';
+    const fmt = constants.DATE_FORMAT;
 
     RED.nodes.registerType('motion-sensor', function (config) {
         RED.nodes.createNode(this, config);
