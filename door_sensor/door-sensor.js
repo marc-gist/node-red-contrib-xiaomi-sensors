@@ -18,15 +18,19 @@ module.exports = function(RED) {
 
         node.timerSet = null;
         node.doorState = null;
+        node.doorIcon = "";
 
         node.doorTimer = function() {
+            //node.warn("door state " + node.doorState);
+            //node.warn(util.inspect(node.timerSet));
             if(node.doorState === 'open') {
                 // node.warn("door timeout send message");
-                clearTimeout(this.timerSet);
-                setTimeout(node.doorTimer, node.openTimeout);
+                clearTimeout(node.timerSet);
+                node.timerSet = setTimeout(node.doorTimer, node.openTimeout);
                 node.send([null, null, null, {payload: true}]);
             } else {
-                clearTimeout(this.timerSet);
+                clearTimeout(node.timerSet);
+                node.doorIcon = "";
             }
         };
         node.doorOpen = function() {
@@ -34,21 +38,25 @@ module.exports = function(RED) {
                 clearTimeout(node.timerSet);
                 node.timerSet = setTimeout(node.doorTimer, node.openTimeout);
                 // node.warn("set timeout " + node.openTimeout);
+                node.doorIcon = "⏱ ";
             }
             node.doorState = 'open';
         };
         node.doorClosed = function() {
-            if(node.timerSet !== null);
+            if(node.timerSet !== null) {
                 clearTimeout(node.timerSet);
-            // node.warn("Clear Timeout Timer " + node.timerSet);
+                node.doorIcon = "";
+            }
+            //node.warn("Clear Timeout Timer " + util.inspect(node.timerSet));
             node.doorState = 'closed';
         };
 
         node.on('input', function (msg) {
             //outputLabels: ["Open", "Closed", "Low Battery", "Door Left Open"],
             let ret = [null, null, null, null];
+            msg.payload = JSON.parse(msg.payload);
 
-
+            //node.warn(msg.payload.contact);
             if(msg.payload.contact === true) {
                 // door is closed, second position payload.
                 node.doorClosed();
@@ -62,11 +70,9 @@ module.exports = function(RED) {
                 ret[2] = msg;
             }
 
-            // TODO - doorIcon if timer Set.
-            msg.payload = JSON.parse(msg.payload);
-            const doorIcon = msg.payload.contact ? "⛔ " : "⭕ ";
+
             node.status({
-                text: doorIcon + moment().format(constants.DATE_FORMAT),
+                text: node.doorIcon + moment().format(constants.DATE_FORMAT),
                 fill: msg.payload.contact ? "green" : "red",
                 shape: msg.payload.contact ? "dot" : "ring"
             });
