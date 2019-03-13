@@ -4,12 +4,13 @@
         color: '#14e830',
         defaults: {
             name: {value:""},
+            openTimeout: {value: 120, validate: RED.validators.number() },
             lowBatteryLevel: { value: 30, validate:RED.validators.number() }
         },
         inputs:1,
-        outputs: 3,
+        outputs: 4,
         inputLabels: ["MQTT JSON String"],
-        outputLabels: ["Open", "Closed", "Low Battery"],
+        outputLabels: ["Open", "Closed", "Low Battery", "Door Left Open"],
         icon: "doorsensor.png",
         label: function() {
             return this.name||"door-sensor";
@@ -21,6 +22,11 @@
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-openTimeout"><i class="fa fa-clock-o"></i> Door Open Timeout (sec)</label>
+        <input type="text" id="node-input-openTimeout" placeholder="120">
+        <div class="help">set to 0 to disable</div>
     </div>
     <div class="form-row">
         <label for="node-input-lowBatteryLevel"><i class="fa fa-battery-quarter"></i> Low Battery</label>
@@ -35,5 +41,9 @@
     </p>
     <p>
         <strong>Note:</strong> sensor payload is "true" for closed door.
+    </p>
+    <p>
+        Door Timeout; will repeat every X seconds set in node properties.  <strong>msg.payload</strong> is simply 'true'
+        until the door is closed.
     </p>
 </script>
