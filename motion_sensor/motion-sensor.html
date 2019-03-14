@@ -36,4 +36,9 @@
 
 <script type="text/x-red" data-help-name="motion-sensor">
     <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into motion sensor outputs</p>
+    <p>
+        Xiamoi sensors tend to timeout very quickly on the motion (send occupancy=false), to extend this, this node can
+        delay the output of the "Empty" for X seconds more. <br />
+        <span style="color: yellow">Yellow</span> icon indicates that the node is waiting for the timeout.
+    </p>
 </script>
