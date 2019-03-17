@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file (hopefully :)
 
 
-## Version 1.0.3.1
+## Version 1.3.1
 
 ### Added
 
@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file (hopefully :
 ### Changed
 
 - Minor updates to Readme
+- changed version number format to comply with npm
 
 ---
 
