@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    RED.nodes.registerType('water-sensor',{
+        category: 'Aqara-Xiaomi z2m',
+        color: '#14e830',
+        defaults: {
+            name: {value:""},
+            lowBatteryLevel: { value: 30, validate:RED.validators.number() }
+        },
+        inputs:1,
+        outputs: 2,
+        inputLabels: ["MQTT JSON String"],
+        outputLabels: ["Leak", "Low Battery"],
+        icon: "water-sensor.png",
+        label: function() {
+            return this.name||"water-sensor";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="water-sensor">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-lowBatteryLevel"><i class="fa fa-battery-quarter"></i> Low Battery</label>
+        <input type="text" id="node-input-lowBatteryLevel" placeholder="30">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="water-sensor">
+    <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into motion sensor outputs</p>
+    <p>
+        Green status = no leak/issues<br />
+        Yellow status = low battery <br />
+        Red Status = Leak detected <br />
+    </p>
+</script>

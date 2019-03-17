@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('wall-switch',{
+        category: 'Aqara-Xiaomi z2m',
+        color: '#14e830',
+        defaults: {
+            name: {value:""},
+            lowBatteryLevel: { value: 30, validate:RED.validators.number() }
+        },
+        inputs:1,
+        outputs: 5,
+        inputLabels: ["MQTT JSON String"],
+        outputLabels: ["Single", "Double", "Hold", "Long", "Low Battery"],
+        icon: "wallswitch.png",
+        label: function() {
+            return this.name||"wall-switch";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="wall-switch">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-lowBatteryLevel"><i class="fa fa-battery-quarter"></i> Low Battery</label>
+        <input type="text" id="node-input-lowBatteryLevel" placeholder="30">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="wall-switch">
+    <p>
+        <strong>Note:</strong> Work in progress. Only works with WXKG03LM (single click version) right now.
+    </p>
+    <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into door sensor outputs</p>
+    <p>Status: Red battery low, Green Battery Ok</p>
+</script>

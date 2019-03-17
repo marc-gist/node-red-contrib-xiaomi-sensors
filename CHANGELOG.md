@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file (hopefully :)
 
+## Version 1.4.0
+
+### Added
+
+ - water sensor
+ - wall sensor (single switch support for now)
+
+---
 
 ## Version 1.3.1
 
