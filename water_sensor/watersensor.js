@@ -29,18 +29,19 @@ module.exports = function(RED) {
         //not this is "global" and saved states
         node.on('input', function (msg) {
             //["Leak", "Low Battery"]
-            let ret = [null, null];
+            let ret = [null, null, null];
             msg.payload = JSON.parse(msg.payload);
 
             if(msg.payload.water_leak === true) {
                 ret[0] = msg;
                 node.nodeColor = "red";
             } else {
+                ret[1] = msg;
                 node.nodeColor = "green";
             }
 
             if(msg.payload.battery < node.lowBatteryLevel) {
-                ret[1] = msg;
+                ret[2] = msg;
                 if(node.nodeColor !== 'red') {
                     node.nodeColor = 'yellow';
                 }

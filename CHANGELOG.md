@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file (hopefully :)
 
+## Version 1.4.1
+
+### Changed
+
+ - button v2 - "shake" action output
+ - Water sensor, leak not detected output
+---
+
+
 ## Version 1.4.0
 
 ### Added

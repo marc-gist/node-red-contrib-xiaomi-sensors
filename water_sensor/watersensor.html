@@ -7,9 +7,9 @@
             lowBatteryLevel: { value: 30, validate:RED.validators.number() }
         },
         inputs:1,
-        outputs: 2,
+        outputs: 3,
         inputLabels: ["MQTT JSON String"],
-        outputLabels: ["Leak", "Low Battery"],
+        outputLabels: ["Leak", "Clear", "Low Battery"],
         icon: "water-sensor.png",
         label: function() {
             return this.name||"water-sensor";
@@ -31,6 +31,7 @@
 
 <script type="text/x-red" data-help-name="water-sensor">
     <p>A simple node that converts the mqtt message payloads for zigbee2mqtt into motion sensor outputs</p>
+    <p>Outputs original payload in JSON object inside msg.payload</p>
     <p>
         Green status = no leak/issues<br />
         Yellow status = low battery <br />

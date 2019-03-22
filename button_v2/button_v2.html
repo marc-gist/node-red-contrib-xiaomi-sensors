@@ -7,9 +7,9 @@
             lowBatteryLevel: { value: 30, validate:RED.validators.number() }
         },
         inputs:1,
-        outputs: 5,
+        outputs: 6,
         inputLabels: ["MQTT JSON String"],
-        outputLabels: ["Single", "Double", "Hold", "Release", "Low Battery"],
+        outputLabels: ["Single", "Double", "Hold", "Release", "shake", "Low Battery"],
         icon: "button2.png",
         label: function() {
             return this.name||"button_v2";

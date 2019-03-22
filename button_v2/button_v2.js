@@ -13,7 +13,7 @@ module.exports = function(RED) {
         var node = this;
         //not this is "global" and saved states
         node.on('input', function (msg) {
-            let ret = [null, null, null, null, null];
+            let ret = [null, null, null, null, null, null];
             let etype = "";
             let lowBat = false;
             msg.payload = JSON.parse(msg.payload);
@@ -37,6 +37,8 @@ module.exports = function(RED) {
                     pos = 2;
                 else if(msg.payload.action === 'release')
                     pos = 3;
+                else if(msg.payload.action === 'shake')
+                    pos = 4;
 
                 etype = msg.payload.action;
             }
@@ -44,7 +46,7 @@ module.exports = function(RED) {
                 ret[pos] = msg;
 
             if(msg.payload.battery < node.lowBatteryLevel) {
-                ret[4] = msg;
+                ret[ret.length-1] = msg;
                 lowBat = true;
             }
 
