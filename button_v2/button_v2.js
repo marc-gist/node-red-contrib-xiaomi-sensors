@@ -42,7 +42,7 @@ module.exports = function(RED) {
 
                 etype = msg.payload.action;
             }
-            if(pos >= 0 && pos <=3)
+            if(pos >= 0 && pos <=4)
                 ret[pos] = msg;
 
             if(msg.payload.battery < node.lowBatteryLevel) {

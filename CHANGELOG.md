@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file (hopefully :)
 
+## Version 1.4.2
+
+### Changed
+
+ - button v2 - "shake" action output Fix bug
+ 
+---
+
+
 ## Version 1.4.1
 
 ### Changed
