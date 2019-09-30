@@ -30,7 +30,12 @@ module.exports = function(RED) {
         node.on('input', function (msg) {
             //["Occupied", "Empty", "Low Battery"]
             let ret = [null, null, null];
-            msg.payload = JSON.parse(msg.payload);
+
+            if (typeof msg.payload === 'object'){
+                msg.payload = msg.payload;
+            } else {
+                msg.payload = JSON.parse(msg.payload);
+            }
 
             if(msg.payload.occupancy === true) {
                 ret[0] = msg;

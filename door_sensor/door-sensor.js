@@ -54,7 +54,12 @@ module.exports = function(RED) {
         node.on('input', function (msg) {
             //outputLabels: ["Open", "Closed", "Low Battery", "Door Left Open"],
             let ret = [null, null, null, null];
-            msg.payload = JSON.parse(msg.payload);
+
+            if (typeof msg.payload === 'object'){
+                msg.payload = msg.payload;
+            } else {
+                msg.payload = JSON.parse(msg.payload);
+            }
 
             //node.warn(msg.payload.contact);
             if(msg.payload.contact === true) {

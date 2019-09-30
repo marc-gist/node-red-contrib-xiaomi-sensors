@@ -16,7 +16,13 @@ module.exports = function(RED) {
             let ret = [null, null, null, null, null, null];
             let etype = "";
             let lowBat = false;
-            msg.payload = JSON.parse(msg.payload);
+
+            if (typeof msg.payload === 'object'){
+                msg.payload = msg.payload;
+            } else {
+                msg.payload = JSON.parse(msg.payload);
+            }
+
             // if(msg.payload.contact === true) {
             //     // door is closed, second position payload.
             //     ret[0] = msg;
