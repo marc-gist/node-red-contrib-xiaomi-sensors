@@ -16,9 +16,14 @@ module.exports = function(RED) {
         //not this is "global" and saved states
         node.on('input', function (msg) {
             var ret = [null, null, null, null, null];
-            msg.payload = JSON.parse(msg.payload);
             let lowBat = false;
             let btype = "";
+
+            if (typeof msg.payload === 'object'){
+                msg.payload = msg.payload;
+            } else {
+                msg.payload = JSON.parse(msg.payload);
+            }
 
             // if(msg.payload.contact === true) {
             //     // door is closed, second position payload.
