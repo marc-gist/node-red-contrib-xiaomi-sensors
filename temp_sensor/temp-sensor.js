@@ -24,7 +24,11 @@ module.exports = function(RED) {
                data: msg.payload
             };
 
-            msg.payload = JSON.parse(msg.payload);
+            if (typeof msg.payload === 'object'){
+                msg.payload = msg.payload;
+            } else {
+                msg.payload = JSON.parse(msg.payload);
+            }
 
             ret[0] = Object.assign({}, newMsg);
             ret[0].payload = Number(msg.payload.temperature.toFixed(1));
